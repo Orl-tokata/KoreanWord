@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "id": "2",
+      "word": "네",
+      "description": "បាទ/ច៎ា"
+    },
+    {
+      "id": "3",
+      "word": "아니요",
+      "description": "អត់ទេ/ទេ"
+    },
+    {
+      "id": "68764fc3-ccd5-48b1-b0b2-d20d0a160123",
+      "word": "안녕하세요",
+      "description": "សួស្ដី"
+    },
+    {
+      "id": "23387202-2139-4e4f-be09-45596b32b2af",
+      "word": "아이구",
+      "description": "Oh dear!"
+    }
+  ]
+}

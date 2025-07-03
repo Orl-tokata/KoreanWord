@@ -1,9 +1,10 @@
 import { ITask } from '@/types/tasks'
 import React from 'react'
 import Task from './Task'
+import { IKorWord } from '@/types/IKorWord'
 
 interface TodoListProps{
-    tasks:ITask[]
+    tasks:IKorWord[]
 }
 
 const TodoList: React.FC<TodoListProps> = ({tasks}) => {

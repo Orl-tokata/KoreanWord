@@ -1,5 +1,4 @@
 import { ITask } from "@/types/tasks";
-import { promises } from "dns";
 
 const baseUrl = 'http://localhost:3001';
 

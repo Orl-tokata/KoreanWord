@@ -5,19 +5,20 @@ import React, { FormEventHandler, useEffect, useState } from 'react'
 import { FiEdit, FiTrash, FiVolume2 } from 'react-icons/fi'
 import Modal from './Modal'
 import { useRouter } from 'next/navigation';
-import { deleteTodo, editTodo } from '@/api/api';
+import { IKorWord } from '@/types/IKorWord';
+import { deleteKorWord, editKorWord } from '@/app/api/korword/route';
 
 interface TaskProp{
-    task:ITask
+    task:IKorWord
 }
 
 const Task: React.FC<TaskProp> = ({task}) => {
     
     const [openModalEdit,setOpenModalEdit] = useState<boolean>(false);
     const [openModalDelete,setOpenModalDelete] = useState<boolean>(false);
-    const [taskToEdit,setTaskToEdit] = useState<string>(task.word);
-    const [korWord, setKorWord] = useState<string>(task.word);
-    const [meaning, setMeaning] = useState<string>(task.description);
+    const [taskToEdit,setTaskToEdit] = useState<string>(task.kor_word);
+    const [korWord, setKorWord] = useState<string>(task.kor_word);
+    const [meaning, setMeaning] = useState<string>(task.desction);
     const router = useRouter();
 
     const handleSubmitEditWord:FormEventHandler<HTMLFormElement> = async (e) => {
@@ -25,17 +26,17 @@ const Task: React.FC<TaskProp> = ({task}) => {
         
         if (!korWord.trim() && !meaning.trim()) return;
 
-        await editTodo({
+        await editKorWord({
             id:task.id,
-            word:korWord,
-            description:meaning
+            kor_word:korWord,
+            desction:meaning
         })
         //setTaskToEdit("");
         setOpenModalEdit(false);
         router.refresh();
     }
     const handleDeleteTask = async (id:string)=>{
-        await deleteTodo(id);
+        await deleteKorWord(id);
         setOpenModalDelete(false);
         router.refresh();
     }
@@ -80,18 +81,18 @@ const Task: React.FC<TaskProp> = ({task}) => {
      <tr key={task.id} className="hover:bg-gray-50 border-0">
         {/* <td className="px-4 py-3">{task.word}</td> */}
         <td className="px-4 py-3 flex items-center gap-2">
-        {task.word}
+        {task.kor_word}
         <FiVolume2
             size={20}
             className="text-violet-500 cursor-pointer hover:text-violet-700"
             title="Click to hear"
             onClick={() => {
-                console.log("🔊 Clicked to speak:", task.word);
-                speakKorean(task.word);
+                console.log("🔊 Clicked to speak:", task.kor_word);
+                speakKorean(task.kor_word);
             }}
             />
         </td>
-        <td className="px-4 py-3">{task.description}</td>
+        <td className="px-4 py-3">{task.desction}</td>
         <td className="px-4 py-3  space-x-2 flex justify-end">
             <FiEdit size={20} cursor={'pointer'} className='text-blue-500 ' title="Click to edit"
                 onClick={()=> setOpenModalEdit(true)}/>

@@ -1,12 +1,13 @@
 
 
-import { getAllTodos } from '@/api/api'
+
 import AddTask from '@/components/AddTask'
 import TodoList from '@/components/TodoList'
 import React from 'react'
+import { getAllKorWords } from './api/korword/route';
 
 export default async function HomePage() {
-  const tasks = await getAllTodos();
+  const tasks = await getAllKorWords();
   console.log(tasks);
 
   return (

@@ -2,9 +2,9 @@
 
 import React, { FormEventHandler, useState } from 'react'
 import Modal from './Modal'
-import { addTodo } from '@/api/api';
 import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
+import { addKorWord } from '@/app/api/korword/route';
 
 const AddTask = () => {
   
@@ -22,10 +22,10 @@ const AddTask = () => {
 
     if (!korWord.trim() && !meaning.trim()) return;
 
-    await addTodo({
+    await addKorWord({
       id:uuidv4(),
-      word:korWord,
-      description:meaning
+      kor_word:korWord,
+      desction:meaning
     })
     setKorWord('');
     setMeaning('');

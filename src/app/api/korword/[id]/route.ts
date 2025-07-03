@@ -1,12 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
-// ✅ Define the correct context type
-interface Context {
-  params: { id: string }
-}
-
-export async function PUT(req: NextRequest, { params }: Context) {
+export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
   const { id } = params
   const body = await req.json()
 
@@ -21,7 +16,7 @@ export async function PUT(req: NextRequest, { params }: Context) {
   return NextResponse.json(updatedWord)
 }
 
-export async function DELETE(req: NextRequest, { params }: Context) {
+export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
   const { id } = params
 
   await prisma.korWord.delete({

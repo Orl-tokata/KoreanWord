@@ -7,8 +7,8 @@ import React from 'react'
 import { getAllKorWords } from './api/korword/route';
 
 export default async function HomePage() {
-  const tasks = await getAllKorWords();
-  console.log(tasks);
+  const korWord = await getAllKorWords();
+  console.log(korWord);
 
   return (
     <main className='max-w-4xl mx-auto mt-4'>
@@ -16,7 +16,7 @@ export default async function HomePage() {
         <h1 className='text-2xl font-bold text-black mt-5 text-center'>Korean Language</h1>
         <AddTask/>
       </div>
-      <TodoList tasks={tasks}/>
+      <TodoList korWord={korWord}/>
     </main>
     
   )

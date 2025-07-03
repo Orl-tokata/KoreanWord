@@ -9,16 +9,15 @@ import { IKorWord } from '@/types/IKorWord';
 import { deleteKorWord, editKorWord } from '@/app/api/korword/route';
 
 interface TaskProp{
-    task:IKorWord
+    word:IKorWord
 }
 
-const Task: React.FC<TaskProp> = ({task}) => {
+const Word: React.FC<TaskProp> = ({word}) => {
     
     const [openModalEdit,setOpenModalEdit] = useState<boolean>(false);
     const [openModalDelete,setOpenModalDelete] = useState<boolean>(false);
-    const [taskToEdit,setTaskToEdit] = useState<string>(task.kor_word);
-    const [korWord, setKorWord] = useState<string>(task.kor_word);
-    const [meaning, setMeaning] = useState<string>(task.desction);
+    const [korWord, setKorWord] = useState<string>(word.kor_word);
+    const [meaning, setMeaning] = useState<string>(word.desction);
     const router = useRouter();
 
     const handleSubmitEditWord:FormEventHandler<HTMLFormElement> = async (e) => {
@@ -27,7 +26,7 @@ const Task: React.FC<TaskProp> = ({task}) => {
         if (!korWord.trim() && !meaning.trim()) return;
 
         await editKorWord({
-            id:task.id,
+            id:word.id,
             kor_word:korWord,
             desction:meaning
         })
@@ -78,21 +77,21 @@ const Task: React.FC<TaskProp> = ({task}) => {
 
 
   return (
-     <tr key={task.id} className="hover:bg-gray-50 border-0">
+     <tr key={word.id} className="hover:bg-gray-50 border-0">
         {/* <td className="px-4 py-3">{task.word}</td> */}
         <td className="px-4 py-3 flex items-center gap-2">
-        {task.kor_word}
+        {word.kor_word}
         <FiVolume2
             size={20}
             className="text-violet-500 cursor-pointer hover:text-violet-700"
             title="Click to hear"
             onClick={() => {
-                console.log("🔊 Clicked to speak:", task.kor_word);
-                speakKorean(task.kor_word);
+                console.log("🔊 Clicked to speak:", word.kor_word);
+                speakKorean(word.kor_word);
             }}
             />
         </td>
-        <td className="px-4 py-3">{task.desction}</td>
+        <td className="px-4 py-3">{word.desction}</td>
         <td className="px-4 py-3  space-x-2 flex justify-end">
             <FiEdit size={20} cursor={'pointer'} className='text-blue-500 ' title="Click to edit"
                 onClick={()=> setOpenModalEdit(true)}/>
@@ -140,7 +139,7 @@ const Task: React.FC<TaskProp> = ({task}) => {
                <h1 className='text-lg flex justify-center mt-4'>Are you sure, you want to delete this word?</h1>
                <div className='modal-action'>
                 <button
-                    onClick={()=> handleDeleteTask(task.id)}
+                    onClick={()=> handleDeleteTask(word.id)}
                     className='btn'>
                     Yes
                 </button>
@@ -151,4 +150,4 @@ const Task: React.FC<TaskProp> = ({task}) => {
   )
 }
 
-export default Task
+export default Word

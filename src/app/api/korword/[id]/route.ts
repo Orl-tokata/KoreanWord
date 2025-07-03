@@ -1,22 +1,27 @@
-// src/app/api/korword/[id]/route.ts
-import { prisma } from '@/lib/prisma'
 import { NextResponse } from 'next/server'
+import { prisma } from '@/lib/prisma'
 
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(req: Request, context: { params: { id: string } }) {
+  const { id } = context.params
   const body = await req.json()
-  const updated = await prisma.korWord.update({
-    where: { id: String(params.id) },
+
+  const updatedWord = await prisma.korWord.update({
+    where: { id },
     data: {
       kor_word: body.kor_word,
       desction: body.desction,
     },
   })
-  return NextResponse.json(updated)
+
+  return NextResponse.json(updatedWord)
 }
 
-export async function DELETE(_: Request, { params }: { params: { id: string } }) {
+export async function DELETE(req: Request, context: { params: { id: string } }) {
+  const { id } = context.params
+
   await prisma.korWord.delete({
-    where: { id: String(params.id) },
+    where: { id },
   })
+
   return NextResponse.json({ message: 'Deleted successfully' })
 }

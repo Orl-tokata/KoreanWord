@@ -1,13 +1,13 @@
-import { ITask } from '@/types/tasks'
+
 import React from 'react'
 import Task from './Task'
 import { IKorWord } from '@/types/IKorWord'
 
 interface TodoListProps{
-    tasks:IKorWord[]
+    korWord:IKorWord[]
 }
 
-const TodoList: React.FC<TodoListProps> = ({tasks}) => {
+const KoreanWordList: React.FC<TodoListProps> = ({korWord = []}) => {
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-white border border-gray-200">
@@ -23,8 +23,8 @@ const TodoList: React.FC<TodoListProps> = ({tasks}) => {
       <div className="max-h-[500px] overflow-y-auto border-t border-gray-200">
         <table className="min-w-full bg-white">
           <tbody className="text-gray-700 text-sm">
-            {tasks.map((task) => (
-              <Task key={task.id} task={task} />
+            {korWord.map((word) => (
+              <Task key={word.id} word={word} />
             ))}
           </tbody>
         </table>
@@ -34,4 +34,4 @@ const TodoList: React.FC<TodoListProps> = ({tasks}) => {
   )
 }
 
-export default TodoList
+export default KoreanWordList

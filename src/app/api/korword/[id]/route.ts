@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest, { params }: { params: Record<string, string> }) {
   const { id } = params
   const body = await req.json()
 
@@ -16,7 +16,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
   return NextResponse.json(updatedWord)
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: Record<string, string> }) {
   const { id } = params
 
   await prisma.korWord.delete({

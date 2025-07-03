@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 import { addKorWord } from '@/app/api/korword/route';
 
-const AddTask = () => {
+const AddKoreanWord = () => {
   
   const [modalOpen, setModalOpen] = useState(false);
   const [korWord, setKorWord] = useState<string>('');
@@ -83,4 +83,4 @@ const AddTask = () => {
   )
 }
 
-export default AddTask
+export default AddKoreanWord

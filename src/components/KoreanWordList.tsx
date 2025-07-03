@@ -1,6 +1,6 @@
 
 import React from 'react'
-import Task from './Task'
+import Task from './Word'
 import { IKorWord } from '@/types/IKorWord'
 
 interface TodoListProps{

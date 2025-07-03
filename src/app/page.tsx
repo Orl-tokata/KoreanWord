@@ -1,8 +1,8 @@
 
 
 
-import AddTask from '@/components/AddTask'
-import TodoList from '@/components/TodoList'
+import AddTask from '@/components/AddKoreanWord'
+import TodoList from '@/components/KoreanWordList'
 import React from 'react'
 import { getAllKorWords } from './api/korword/route';
 

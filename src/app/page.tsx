@@ -4,7 +4,7 @@
 import AddTask from '@/components/AddKoreanWord'
 import TodoList from '@/components/KoreanWordList'
 import React from 'react'
-import { getAllKorWords } from './api/korword/route';
+import { getAllKorWords } from './api/action';
 
 export default async function HomePage() {
   const korWord = await getAllKorWords();

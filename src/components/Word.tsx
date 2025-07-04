@@ -6,7 +6,7 @@ import { FiEdit, FiTrash, FiVolume2 } from 'react-icons/fi'
 import Modal from './Modal'
 import { useRouter } from 'next/navigation';
 import { IKorWord } from '@/types/IKorWord';
-import { deleteKorWord, editKorWord } from '@/app/api/korword/route';
+import { deleteKorWord, editKorWord } from '@/app/api/action';
 
 interface TaskProp{
     word:IKorWord

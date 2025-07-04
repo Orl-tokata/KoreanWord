@@ -4,7 +4,7 @@ import React, { FormEventHandler, useState } from 'react'
 import Modal from './Modal'
 import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
-import { addKorWord } from '@/app/api/korword/route';
+import { addKorWord } from '@/app/api/action';
 
 const AddKoreanWord = () => {
   
